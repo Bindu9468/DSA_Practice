@@ -18,12 +18,13 @@ public class quick {
         }
         int s = low;
         int e = high;
-        int mid = arr[(s + e) / 2];
+        int mid = s + (e - s) / 2;
+        int pivot = arr[mid];
         while (s <= e) {
-            while (arr[s] < mid) {
+            while (arr[s] < pivot) {
                 s++;
             }
-            while (arr[e] > mid) {
+            while (arr[e] > pivot) {
                 e--;
             }
 
