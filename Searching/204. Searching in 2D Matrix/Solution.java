@@ -17,6 +17,13 @@ class Solution {
     }
 }
 
+/*
+ * if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+ * return false;
+ * }
+ * 
+ */
+
 // Time Complexity: O(m + n) where m is the number of rows and n is the number
 // of columns in the matrix
 // Space Complexity: O(1) as we are using only a constant amount of space
