@@ -1,71 +1,42 @@
 
 //{ Driver Code Starts
-import java.io.*;
-import java.util.*;
-
-class Sorting {
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int t = Integer.parseInt(br.readLine());
-        for (int g = 0; g < t; g++) {
-            String[] str = (br.readLine()).trim().split(" ");
-            int arr[] = new int[str.length];
-            for (int i = 0; i < str.length; i++)
-                arr[i] = Integer.parseInt(str[i]);
-            System.out.println(new Solution().inversionCount(arr));
-            System.out.println("~");
-        }
-    }
-}
-// } Driver Code Ends
-
-// User function Template for Java
-
 class Solution {
+    // Function to count inversions in the array.
     static int inversionCount(int arr[]) {
-        int[] temp = new int[arr.length];
-        return mergeSort(arr, temp, 0, arr.length - 1);
+        // Your Code Here
+        int temp[] = new int[arr.length];
+        return mergecount(arr, temp, 0, arr.length - 1);
     }
 
-    static int mergeSort(int[] arr, int[] temp, int left, int right) {
-        int mid, invCount = 0;
+    static int mergecount(int arr[], int temp[], int left, int right) {
+        int count = 0;
         if (left < right) {
-            mid = (left + right) / 2;
-
-            invCount += mergeSort(arr, temp, left, mid);
-            invCount += mergeSort(arr, temp, mid + 1, right);
-            invCount += merge(arr, temp, left, mid + 1, right);
+            int mid = left + (right - left) / 2;
+            count += mergecount(arr, temp, left, mid);
+            count += mergecount(arr, temp, mid + 1, right);
+            count += merge(arr, temp, left, mid, right);
         }
-        return invCount;
+        return count;
     }
 
-    static int merge(int[] arr, int[] temp, int left, int mid, int right) {
-        int i = left; // left subarray pointer
-        int j = mid; // right subarray pointer
-        int k = left; // temp array pointer
-        int invCount = 0;
-
-        while (i <= mid - 1 && j <= right) {
+    static int merge(int arr[], int temp[], int left, int mid, int right) {
+        int i = left, j = mid + 1, k = left, count = 0;
+        while (i <= mid && j <= right) {
             if (arr[i] <= arr[j]) {
                 temp[k++] = arr[i++];
             } else {
                 temp[k++] = arr[j++];
-                invCount += (mid - i); // Count inversions
+                count += mid - i + 1;
             }
         }
-
-        // Copy remaining elements
-        while (i <= mid - 1)
+        while (i <= mid)
             temp[k++] = arr[i++];
         while (j <= right)
             temp[k++] = arr[j++];
-
-        // Copy back to original array
         for (i = left; i <= right; i++) {
             arr[i] = temp[i];
         }
-
-        return invCount;
+        return count;
     }
 }
 // Time Complexity: O(n log n) where n is the length of the input array nums.
