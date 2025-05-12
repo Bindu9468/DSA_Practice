@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);

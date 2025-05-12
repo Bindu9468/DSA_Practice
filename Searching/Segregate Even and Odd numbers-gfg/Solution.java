@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Solution {
     void segregateEvenOdd(int arr[]) {
         // code here
@@ -29,30 +31,30 @@ class Solution {
 }
 
 // or
-
-class Solution {
-    void segregateEvenOdd(int arr[]) {
-        List<Integer> even = new ArrayList<>();
-        List<Integer> odd = new ArrayList<>();
-
-        for (int num : arr) {
-            if (num % 2 == 0)
-                even.add(num);
-            else
-                odd.add(num);
-        }
-        Collections.sort(even);
-        Collections.sort(odd);
-
-        List<Integer> result = new ArrayList<>();
-        result.addAll(even);
-        result.addAll(odd);
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = result.get(i);
-        }
-    }
-}
-
+/*
+ * class Solution {
+ * void segregateEvenOdd(int arr[]) {
+ * List<Integer> even = new ArrayList<>();
+ * List<Integer> odd = new ArrayList<>();
+ * 
+ * for (int num : arr) {
+ * if (num % 2 == 0)
+ * even.add(num);
+ * else
+ * odd.add(num);
+ * }
+ * Collections.sort(even);
+ * Collections.sort(odd);
+ * 
+ * List<Integer> result = new ArrayList<>();
+ * result.addAll(even);
+ * result.addAll(odd);
+ * for (int i = 0; i < arr.length; i++) {
+ * arr[i] = result.get(i);
+ * }
+ * }
+ * }
+ */
 /*
  * Given an array arr, write a program segregating even and odd numbers. The
  * program should put all even numbers first in sorted order, and then odd
