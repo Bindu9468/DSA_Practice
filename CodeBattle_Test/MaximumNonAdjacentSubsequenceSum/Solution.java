@@ -1,3 +1,4 @@
+package CodeBattle_Test.MaximumNonAdjacentSubsequenceSum;
 
 class Solution {
     public int maxNonAdjacentSum(int[] nums) {
